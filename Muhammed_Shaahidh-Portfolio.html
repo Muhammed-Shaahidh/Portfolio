@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammed Shaahidh | Portfolio</title>
+  <meta name="description" content="Hi, I'm Muhammed Shaahidh, an undergraduate specializing in Computer Systems & Network Engineering with interests in cloud, networking, Linux, and infrastructure." />
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-secondary: #0f172a;
+      --surface: rgba(15, 23, 42, 0.78);
+      --surface-strong: rgba(15, 23, 42, 0.95);
+      --card: rgba(15, 23, 42, 0.72);
+      --border: rgba(148, 163, 184, 0.18);
+      --text: #e5e7eb;
+      --text-soft: #cbd5e1;
+      --muted: #94a3b8;
+      --primary: #3b82f6;
+      --secondary: #06b6d4;
+      --accent: #60a5fa;
+      --shadow: 0 20px 45px rgba(2, 6, 23, 0.38);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 16px;
+      --container: 1180px;
+      --nav-height: 82px;
+      --hero-gradient: radial-gradient(circle at top left, rgba(59,130,246,0.22), transparent 28%), radial-gradient(circle at 80% 10%, rgba(6,182,212,0.16), transparent 24%), linear-gradient(180deg, #020617 0%, #081120 42%, #0f172a 100%);
+    }
+
+    body.light-theme {
+      --bg: #f8fafc;
+      --bg-secondary: #e2e8f0;
+      --surface: rgba(255, 255, 255, 0.78);
+      --surface-strong: rgba(255, 255, 255, 0.94);
+      --card: rgba(255, 255, 255, 0.86);
+      --border: rgba(15, 23, 42, 0.09);
+      --text: #0f172a;
+      --text-soft: #334155;
+      --muted: #64748b;
+      --shadow: 0 20px 40px rgba(15, 23, 42, 0.10);
+      --hero-gradient: radial-gradient(circle at top left, rgba(59,130,246,0.10), transparent 28%), radial-gradient(circle at 80% 10%, rgba(6,182,212,0.08), transparent 24%), linear-gradient(180deg, #f8fafc 0%, #eef4ff 42%, #e9f4fb 100%);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--hero-gradient);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background 0.35s ease, color 0.35s ease;
+    }
+
+    body.menu-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--container));
+      margin-inline: auto;
+    }
+
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 42px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.55rem 0.95rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text-soft);
+      font-size: 0.92rem;
+      margin-bottom: 16px;
+      backdrop-filter: blur(14px);
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      background: color-mix(in srgb, var(--surface-strong) 84%, transparent);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      box-shadow: 0 16px 32px rgba(59,130,246,0.26);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 1.3rem;
+    }
+
+    .nav-links a {
+      color: var(--text-soft);
+      font-weight: 600;
+      transition: color 0.25s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 100%;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--text); }
+    .nav-links a:hover::after,
+    .nav-links a.active::after { transform: scaleX(1); }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn,
+    .toggle-btn,
+    .menu-toggle {
+      border: 0;
+      cursor: pointer;
+      font: inherit;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0.95rem 1.28rem;
+      border-radius: 16px;
+      font-weight: 700;
+    }
+
+    .btn:hover,
+    .toggle-btn:hover,
+    .menu-toggle:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      box-shadow: 0 18px 32px rgba(6, 182, 212, 0.18);
+    }
+
+    .btn-outline {
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    .toggle-btn,
+    .menu-toggle {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: inline-grid;
+      place-items: center;
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+    }
+
+    .menu-toggle { display: none; }
+
+    .hero {
+      min-height: calc(100vh - var(--nav-height));
+      padding: 64px 0 34px;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      margin-bottom: 16px;
+    }
+
+    .hero-text h1 span {
+      background: linear-gradient(135deg, var(--accent), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text p {
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 1.02rem;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 26px;
+    }
+
+    .quick-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 24px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.65rem 0.95rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text-soft);
+      font-size: 0.92rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .stat-card,
+    .panel,
+    .project-card,
+    .skill-card,
+    .contact-card,
+    .timeline-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .stat-card {
+      padding: 1.15rem;
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 1.55rem;
+      margin-bottom: 2px;
+    }
+
+    .stat-card span { color: var(--muted); font-size: 0.94rem; }
+
+    .hero-visual {
+      display: grid;
+      gap: 1rem;
+      justify-items: center;
+    }
+
+    .profile-panel {
+      padding: 1rem;
+      position: relative;
+      overflow: hidden;
+      width: min(100%, 360px);
+    }
+
+    .profile-panel::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(59,130,246,0.45), rgba(6,182,212,0.12));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .profile-image-wrap {
+      position: relative;
+      border-radius: 22px;
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+      background: linear-gradient(180deg, rgba(59,130,246,0.12), rgba(6,182,212,0.08));
+      border: 1px solid var(--border);
+      max-height: 460px;
+    }
+
+    .profile-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .profile-badge {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      padding: 0.9rem 1rem;
+      border-radius: 18px;
+      background: rgba(2, 6, 23, 0.62);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(12px);
+      color: #fff;
+    }
+
+    body.light-theme .profile-badge {
+      background: rgba(255,255,255,0.78);
+      color: #0f172a;
+    }
+
+    .profile-badge h3 {
+      font-size: 1.05rem;
+      margin-bottom: 4px;
+    }
+
+    .profile-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem;
+      width: 100%;
+    }
+
+    .mini-card {
+      padding: 1rem 1.1rem;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+    }
+
+    .mini-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    .mini-card strong {
+      font-size: 1rem;
+      color: var(--text);
+      word-break: break-word;
+    }
+
+    .about-grid,
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .panel,
+    .contact-card,
+    .timeline-card {
+      padding: 1.55rem;
+    }
+
+    .panel h3,
+    .contact-card h3,
+    .timeline-card h3,
+    .skill-card h3 {
+      font-size: 1.18rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .panel p,
+    .contact-card p,
+    .timeline-card p,
+    .list-text,
+    .project-desc {
+      color: var(--muted);
+    }
+
+    .bullet-list {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.1rem;
+    }
+
+    .bullet-item {
+      display: flex;
+      gap: 0.9rem;
+      align-items: flex-start;
+    }
+
+    .bullet-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-top: 8px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      flex-shrink: 0;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 0.9rem;
+      margin-top: 1.1rem;
+    }
+
+    .timeline-item {
+      padding: 1rem 1rem 1rem 1.15rem;
+      border-left: 2px solid rgba(59,130,246,0.5);
+      background: rgba(255,255,255,0.03);
+      border-radius: 0 16px 16px 0;
+    }
+
+    .timeline-item strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .timeline-item span {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .project-card {
+      padding: 1.35rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(6,182,212,0.35);
+      box-shadow: 0 24px 48px rgba(2, 6, 23, 0.24);
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .project-title {
+      font-size: 1.18rem;
+      line-height: 1.25;
+      margin-bottom: 6px;
+    }
+
+    .project-date {
+      font-size: 0.93rem;
+      color: var(--secondary);
+      font-weight: 700;
+    }
+
+    .chip-row,
+    .skills-tags,
+    .footer-links,
+    .project-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text-soft);
+      font-size: 0.88rem;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      color: var(--text);
+      padding: 0.7rem 0.95rem;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .project-link:hover {
+      border-color: rgba(6,182,212,0.4);
+      color: var(--secondary);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .skill-card {
+      padding: 1.35rem;
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .contact-link {
+      display: block;
+      padding: 1rem 1.05rem;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .contact-link:hover {
+      transform: translateX(4px);
+      border-color: rgba(6,182,212,0.4);
+    }
+
+    .contact-link small {
+      display: block;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .field {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      font: inherit;
+      padding: 1rem;
+      outline: none;
+      resize: vertical;
+      min-height: 56px;
+    }
+
+    textarea.field { min-height: 150px; }
+
+    .field:focus {
+      border-color: rgba(59,130,246,0.5);
+      box-shadow: 0 0 0 4px rgba(59,130,246,0.12);
+    }
+
+    .form-note {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .footer {
+      padding: 26px 0 46px;
+      border-top: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer p { color: var(--muted); }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid,
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 40px;
+      }
+    }
+
+    @media (max-width: 880px) {
+      .menu-toggle { display: inline-grid; }
+
+      .nav-links {
+        position: fixed;
+        inset: var(--nav-height) 1rem auto 1rem;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.25rem;
+        background: var(--surface-strong);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        padding: 1rem;
+        box-shadow: var(--shadow);
+        opacity: 0;
+        transform: translateY(-12px);
+        pointer-events: none;
+        transition: 0.25s ease;
+      }
+
+      .nav-links.open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 0.85rem 0.95rem;
+        border-radius: 14px;
+      }
+
+      .nav-links a::after { display: none; }
+      .nav-links a.active,
+      .nav-links a:hover { background: rgba(255,255,255,0.05); }
+
+      .nav-actions .btn-primary { display: none; }
+    }
+
+    @media (max-width: 680px) {
+      .section { padding: 80px 0; }
+      .hero-actions,
+      .stats-grid,
+      .profile-meta { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .stats-grid { display: grid; }
+      .btn { width: 100%; }
+      .project-top { flex-direction: column; }
+      .profile-panel { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="brand" aria-label="Go to home section">
+        <span class="brand-mark">MS</span>
+        <span>Muhammed Shaahidh</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="toggle-btn" id="themeToggle" aria-label="Toggle dark and light theme">☀️</button>
+        <a class="btn btn-primary" href="./Muhammed_Shaahidh-CV.pdf" download="Muhammed_Shaahidh-CV.pdf">Download CV</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-text reveal visible">
+          <span class="eyebrow">Cloud • Networking • Linux • Infrastructure</span>
+          <h1>Hi, I'm <span>Muhammed Shaahidh</span></h1>
+          <p>
+            I am an undergraduate specializing in Computer Systems & Network Engineering with a strong interest in cloud computing, networking, Linux systems, and enterprise infrastructure. I enjoy building secure, practical, and scalable solutions through hands-on projects and continuous learning.
+          </p>
+
+          <div class="quick-info">
+            <span class="pill">📍 Kandy, Sri Lanka</span>
+            <span class="pill">🎓 SLIIT Undergraduate</span>
+            <span class="pill">☁️ Aspiring Cloud / Network Engineer</span>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">Explore Projects</a>
+            <a href="./Muhammed_Shaahidh-CV.pdf" class="btn btn-outline" download="Muhammed_Shaahidh-CV.pdf">Download CV</a>
+            <a href="#contact" class="btn btn-outline">Contact Me</a>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <strong>4+</strong>
+              <span>Featured projects</span>
+            </div>
+            <div class="stat-card">
+              <strong>2024–2028</strong>
+              <span>BSc (Hons) IT Specializing in Computer Systems & Network Engineering at SLIIT</span>
+            </div>
+            <div class="stat-card">
+              <strong>Cloud / Network Engineering</strong>
+              <span>Career focus</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="profile-panel panel">
+            <div class="profile-image-wrap">
+              <img src="IMG_2738.1.jpg" alt="Portrait of Muhammed Shaahidh" />
+              <div class="profile-badge">
+                <h3>Muhammed Shaahidh</h3>
+                <p>Computer Systems & Network Engineering Undergraduate</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-meta">
+            <div class="mini-card">
+              <span>Email</span>
+              <strong>muhammedshaahidh@gmail.com</strong>
+            </div>
+            <div class="mini-card">
+              <span>Phone</span>
+              <strong>+94 76 700 6263</strong>
+            </div>
+            <div class="mini-card">
+              <span>LinkedIn</span>
+              <strong>muhammed-shaahidh</strong>
+            </div>
+            <div class="mini-card">
+              <span>GitHub</span>
+              <strong>Muhammed-Shaahidh</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">About</span>
+          <h2 class="section-title">Building skills in cloud, networking, and infrastructure</h2>
+          <p class="section-subtitle">
+            My academic path and projects are focused on enterprise environments, Linux administration, networking, virtualization, and practical system design. I aim to build a strong career in cloud and network engineering by combining technical learning with real implementation experience.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <article class="panel reveal">
+            <h3>Professional Summary</h3>
+            <p>
+              I have hands-on experience in building enterprise-level virtualized environments, network architectures, and software systems. I am especially interested in designing secure and high-performance systems while continuing to improve my knowledge of cloud and DevOps technologies.
+            </p>
+            <div class="bullet-list">
+              <div class="bullet-item">
+                <span class="bullet-dot"></span>
+                <div>
+                  <strong>Education</strong>
+                  <p class="list-text">BSc (Hons) in Information Technology, specializing in Computer Systems & Network Engineering at SLIIT.</p>
+                </div>
+              </div>
+              <div class="bullet-item">
+                <span class="bullet-dot"></span>
+                <div>
+                  <strong>Focus Areas</strong>
+                  <p class="list-text">Cloud computing, Linux administration, virtualization, enterprise networking, and infrastructure services.</p>
+                </div>
+              </div>
+              <div class="bullet-item">
+                <span class="bullet-dot"></span>
+                <div>
+                  <strong>Career Objective</strong>
+                  <p class="list-text">Seeking an internship in Cloud or Network Engineering to apply technical skills in real-world environments.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-card reveal">
+            <h3>Education</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <strong>SLIIT — BSc (Hons) Information Technology</strong>
+                <span>2024 – 2028 · Specializing in Computer Systems & Network Engineering</span>
+              </div>
+              <div class="timeline-item">
+                <strong>St. Anthony's College, Kandy</strong>
+                <span>2020 – 2023 · G.C.E Advanced Level – Physical Sciences</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-card reveal">
+            <h3>Certificates</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <strong>AWS Educate – Introduction to Cloud</strong>
+                <span>Certification</span>
+              </div>
+              <div class="timeline-item">
+                <strong>Linux Unhatched</strong>
+                <span>Certification</span>
+              </div>
+              <div class="timeline-item">
+                <strong>Introduction to Generative AI</strong>
+                <span>Certification</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Projects</span>
+          <h2 class="section-title">Latest work and project experience</h2>
+          <p class="section-subtitle">
+            These projects reflect my interest in enterprise infrastructure, network design, applied software development, and practical problem solving.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card reveal">
+            <div class="project-top">
+              <div>
+                <h3 class="project-title">Enterprise Linux Infrastructure Deployment</h3>
+                <div class="project-date">Apr 2026</div>
+              </div>
+              <span class="chip">Infrastructure</span>
+            </div>
+            <p class="project-desc">
+              Built a virtualized enterprise infrastructure using Linux servers and configured DHCP, Samba AD, DNS, LDAP, Kerberos, Apache, and Zimbra services with end-to-end testing and troubleshooting.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Linux Administration</span>
+              <span class="chip">Kea DHCP</span>
+              <span class="chip">Samba AD</span>
+              <span class="chip">Zimbra</span>
+              <span class="chip">Apache</span>
+              <span class="chip">VirtualBox</span>
+            </div>
+            <div class="project-actions">
+              <a class="project-link" href="https://github.com/Muhammed-Shaahidh/SLIIT/tree/main/Y2S2/NMA/Assignment" target="_blank" rel="noreferrer">View GitHub</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-top">
+              <div>
+                <h3 class="project-title">Enterprise Wired and Wireless Network Design</h3>
+                <div class="project-date">Apr 2026</div>
+              </div>
+              <span class="chip">Networking</span>
+            </div>
+            <p class="project-desc">
+              Designed a secure office network for up to 120 endpoints using VLAN segmentation, inter-VLAN routing, DHCP, ACL-based isolation, wireless segmentation, and core security design concepts.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Cisco Packet Tracer</span>
+              <span class="chip">VLANs</span>
+              <span class="chip">DHCP</span>
+              <span class="chip">ACL</span>
+              <span class="chip">Wireless Networking</span>
+              <span class="chip">Network Security</span>
+            </div>
+            <div class="project-actions">
+              <a class="project-link" href="https://github.com/Muhammed-Shaahidh/SLIIT/tree/main/Y2S2/DCWN/Assignment" target="_blank" rel="noreferrer">View GitHub</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-top">
+              <div>
+                <h3 class="project-title">Heart Attack Prediction Bot</h3>
+                <div class="project-date">Jul 2025 - Oct 2025</div>
+              </div>
+              <span class="chip">Machine Learning</span>
+            </div>
+            <p class="project-desc">
+              Developed a machine learning based risk prediction solution with preprocessing, evaluation, and chatbot-style interaction.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Python</span>
+              <span class="chip">Machine Learning</span>
+              <span class="chip">Model Evaluation</span>
+            </div>
+            <div class="project-actions">
+              <a class="project-link" href="https://github.com/Muhammed-Shaahidh/Heart_Attack_Prediction" target="_blank" rel="noreferrer">View GitHub</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-top">
+              <div>
+                <h3 class="project-title">Web-Based Catering Management System</h3>
+                <div class="project-date">Jul 2025 - Oct 2025</div>
+              </div>
+              <span class="chip">Web App</span>
+            </div>
+            <p class="project-desc">
+              Developed a web application for order and inventory management while applying frontend-backend thinking and system design principles.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Java</span>
+              <span class="chip">JavaScript</span>
+              <span class="chip">HTML</span>
+              <span class="chip">CSS</span>
+            </div>
+            <div class="project-actions">
+              <a class="project-link" href="https://github.com/Muhammed-Shaahidh/Web-Based-Catering-System" target="_blank" rel="noreferrer">View GitHub</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-top">
+              <div>
+                <h3 class="project-title">Home Tutor Booking System</h3>
+                <div class="project-date">Feb 2025 - May 2025</div>
+              </div>
+              <span class="chip">Java</span>
+            </div>
+            <p class="project-desc">
+              Built a CLI-based booking system using object-oriented programming concepts and file handling for managing tutor sessions.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Java</span>
+              <span class="chip">OOP</span>
+              <span class="chip">File Handling</span>
+            </div>
+            <div class="project-actions">
+              <a class="project-link" href="https://github.com/ilhamhilmy63/Home-Tutor-System" target="_blank" rel="noreferrer">View GitHub</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-top">
+              <div>
+                <h3 class="project-title">Water Tank Monitoring System with pH Detection</h3>
+                <div class="project-date">Oct 2024 - Jan 2025</div>
+              </div>
+              <span class="chip">Embedded</span>
+            </div>
+            <p class="project-desc">
+              Created a real-time monitoring solution for water level and pH detection using sensors, a microcontroller, and an LCD display.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Arduino</span>
+              <span class="chip">Sensors</span>
+              <span class="chip">Microcontroller</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Skills</span>
+          <h2 class="section-title">Technical and Professional Strengths</h2>
+          <p class="section-subtitle">
+             Skills developed through academic learning, hands-on projects, and continuous self-improvement in networking, systems, and infrastructure.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          
+          <article class="skill-card reveal">
+            <h3>Systems & Infrastructure</h3>
+            <div class="skills-tags">
+              <span class="chip">Linux</span>
+              <span class="chip">CLI</span>
+              <span class="chip">VirtualBox</span>
+              <span class="chip">Apache</span>
+              <span class="chip">Zimbra</span>
+              <span class="chip">System Administration</span>
+            </div>
+          </article>
+
+          <article class="skill-card reveal">
+            <h3>Networking</h3>
+            <div class="skills-tags">
+              <span class="chip">VLANs</span>
+              <span class="chip">DHCP</span>
+              <span class="chip">DNS</span>
+              <span class="chip">ACL</span>
+              <span class="chip">Active Directory</span>
+              <span class="chip">LDAP</span>
+              <span class="chip">Kerberos</span>
+            </div>
+          </article>
+
+          <article class="skill-card reveal">
+            <h3>Cloud & DevOps</h3>
+            <div class="skills-tags">
+              <span class="chip">AWS (Learning)</span>
+              <span class="chip">Cloud Fundamentals</span>
+              <span class="chip">Git & GitHub</span>
+              <span class="chip">Virtualization</span>
+            </div>
+          </article>
+
+          <article class="skill-card reveal">
+            <h3>Programming</h3>
+            <div class="skills-tags">
+              <span class="chip">Java</span>
+              <span class="chip">Python</span>
+              <span class="chip">R</span>
+              <span class="chip">HTML</span>
+              <span class="chip">CSS</span>
+              <span class="chip">JavaScript</span>
+            </div>
+          </article>
+
+          <article class="skill-card reveal">
+            <h3>Soft Skills</h3>
+            <div class="skills-tags">
+              <span class="chip">Teamwork</span>
+              <span class="chip">Problem Solving</span>
+              <span class="chip">Adaptability</span>
+              <span class="chip">Time Management</span>
+              <span class="chip">Emotional Intelligence</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Contact</span>
+          <h2 class="section-title">Let’s connect</h2>
+          <p class="section-subtitle">
+            I am open to internships, collaborations, and learning opportunities related to cloud computing, networking, and infrastructure engineering.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <article class="contact-card reveal">
+            <h3>Contact Information</h3>
+            <p>You can connect with me through the platforms below.</p>
+            <div class="contact-links">
+              <a class="contact-link" href="mailto:muhammedshaahidh@gmail.com">
+                <small>Email</small>
+                <strong>muhammedshaahidh@gmail.com</strong>
+              </a>
+              <a class="contact-link" href="tel:+94767006263">
+                <small>Phone</small>
+                <strong>0767006263</strong>
+              </a>
+              <a class="contact-link" href="https://www.linkedin.com/in/muhammed-shaahidh" target="_blank" rel="noreferrer">
+                <small>LinkedIn</small>
+                <strong>www.linkedin.com/in/muhammed-shaahidh</strong>
+              </a>
+              <a class="contact-link" href="https://github.com/Muhammed-Shaahidh" target="_blank" rel="noreferrer">
+                <small>GitHub</small>
+                <strong>github.com/Muhammed-Shaahidh</strong>
+              </a>
+            </div>
+          </article>
+
+          <article class="contact-card reveal">
+            <h3>Quick Message</h3>
+            <p>This form is styled and ready. Connect it to Formspree, EmailJS, or your own backend to receive real messages.</p>
+            <form class="contact-form" onsubmit="handleForm(event)">
+              <input class="field" type="text" name="name" placeholder="Your Name" required />
+              <input class="field" type="email" name="email" placeholder="Your Email" required />
+              <textarea class="field" name="message" placeholder="Your Message" required></textarea>
+              <button class="btn btn-primary" type="submit">Send Message</button>
+              <p class="form-note" id="formNote">Demo mode: this form shows a success message only.</p>
+            </form>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>Muhammed Shaahidh</strong>
+        <p>Designed with a dark tech theme and responsive modern layout.</p>
+      </div>
+      <div class="footer-links">
+        <a class="chip" href="#home">Home</a>
+        <a class="chip" href="#about">About</a>
+        <a class="chip" href="#projects">Projects</a>
+        <a class="chip" href="#skills">Skills</a>
+        <a class="chip" href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    const navAnchors = document.querySelectorAll('.nav-links a');
+    const sections = document.querySelectorAll('main section[id]');
+    const themeToggle = document.getElementById('themeToggle');
+
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    if (savedTheme === 'light') {
+      document.body.classList.add('light-theme');
+      themeToggle.textContent = '🌙';
+    }
+
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-theme');
+      const isLight = document.body.classList.contains('light-theme');
+      themeToggle.textContent = isLight ? '🌙' : '☀️';
+      localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
+    });
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      document.body.classList.toggle('menu-open');
+    });
+
+    navAnchors.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        document.body.classList.remove('menu-open');
+      });
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll('.reveal').forEach(item => revealObserver.observe(item));
+
+    const setActiveLink = () => {
+      let current = 'home';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 130;
+        if (window.scrollY >= sectionTop) {
+          current = section.id;
+        }
+      });
+
+      navAnchors.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+      });
+    };
+
+    window.addEventListener('scroll', setActiveLink);
+    setActiveLink();
+
+    function handleForm(event) {
+      event.preventDefault();
+      const formNote = document.getElementById('formNote');
+      formNote.textContent = 'Message submitted successfully. Connect this form to EmailJS, Formspree, or a backend to receive real messages.';
+      event.target.reset();
+    }
+  </script>
+</body>
+</html>
